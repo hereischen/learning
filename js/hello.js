@@ -11,7 +11,7 @@ function shit(name) {
 }
 module.exports = {
 	shit : shit,
-	// greet : greet
+	greet : greet
 }
 
 // exports.shit = function (name) {
