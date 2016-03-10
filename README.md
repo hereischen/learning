@@ -1,1 +1,1 @@
-# learning-python-js
+# learning something new :P
