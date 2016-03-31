@@ -15,13 +15,16 @@ def movie(name):
         sleep(5)
 
 threads = []
-t1 = threading.Thread(target=music, args='七子之歌')
+t1 = threading.Thread(target=music, args=('七子之歌',))
 threads.append(t1)
-t2 = threading.Thread(target=movie, args='荒野猎人')
+t2 = threading.Thread(target=movie, args=('荒野猎人',))
 threads.append(t2)
+
+
 if __name__ == '__main__':
     for th in threads:
         th.setDaemon(True)
         th.start()
 
+    th.join()
     print "完成>>>>> %s" % ctime()
