@@ -60,7 +60,7 @@ def merge_sort(l):
 
 
 if __name__ == '__main__':
-	# print bubble_sort(l) 
-	# print selection_sort(l)	
-	# print insertion_sort(l)	
-	print merge_sort(l)	
+	# print bubble_sort(l)
+	# print selection_sort(l)
+	# print insertion_sort(l)
+	print merge_sort(l)
