@@ -84,13 +84,13 @@ def classify_person():
 
 # 手写识别部分
 def img2vector(filename):
-    return_vect = zeros((1,1024))
-    fr = open(filename)
-    for i in range(32):
-        line_str = fr.readline()
-        for j in range(32):
-            return_vect[0,32*i+j] = int(line_str[j])
-    return return_vect
+	return_vect = zeros((1,1024))
+	fr = open(filename)
+	for i in range(32):
+		line_str = fr.readline()
+		for j in range(32):
+			return_vect[0,32*i+j] = int(line_str[j])
+	return return_vect
 
 def hand_writing_class_test():
 	hwlabels = []
