@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 from numpy import *
 import operator
+from os import listdir
 
 def create_dataset():
 	group = array([[1.0,1.1], [1.0,1.0], [0,0],[0,0.1]])
@@ -81,11 +82,50 @@ def classify_person():
 	print '你喜欢这个人的可能性为: ', result_list[classifier_result-1]
 
 
+# 手写识别部分
+def img2vector(filename):
+    return_vect = zeros((1,1024))
+    fr = open(filename)
+    for i in range(32):
+        line_str = fr.readline()
+        for j in range(32):
+            return_vect[0,32*i+j] = int(line_str[j])
+    return return_vect
+
+def hand_writing_class_test():
+	hwlabels = []
+	training_file_list = listdir('trainingDigits')
+	m = len(training_file_list)
+	training_mat = zeros((m,1024))
+	for i in range(m):
+		filename_str = training_file_list[i]
+		file_str = filename_str.split('.')[0]
+		class_num_str = int(file_str.split('_')[0])
+		hwlabels.append(class_num_str)
+		training_mat[i,:] = img2vector('trainingDigits/%s' % filename_str)
+	test_file_list = listdir('testDigits')
+	error_count= 0.0
+	mtest = len(test_file_list)
+	for i in range(mtest):
+		filename_str = test_file_list[i]
+		file_str = filename_str.split('.')[0]
+		class_num_str = int(file_str.split('_')[0])
+		vector_under_test = img2vector('testDigits/%s' % filename_str)
+		classifier_result = classify0(vector_under_test, training_mat,hwlabels,3)
+		print '测试结果为: %d, 实际结果为: %d' % (classifier_result, class_num_str)
+		if (classifier_result != class_num_str) :
+			error_count += 1.0
+	print '错误量为%d 错误率为%f ' % (error_count, error_count/float(mtest))
+
+
+
+
 if __name__ == '__main__':
 	group,labels = create_dataset()
 	# print classify0([0,0],group,labels,2)
 	# dating_class_test()
-	classify_person()
+	# classify_person()
+	hand_writing_class_test()
 
 
 
