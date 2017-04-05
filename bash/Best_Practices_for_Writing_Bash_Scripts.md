@@ -1,4 +1,4 @@
-t Practices for Writing Bash Scripts
+Practices for Writing Bash Scripts
 
 ------
 I recently refacted a bash script. I decide to keep a few best practices in one place.Here goes:
