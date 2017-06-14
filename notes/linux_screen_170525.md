@@ -38,6 +38,7 @@ $ screen -x screen_session_name
 ```
 $ exit
 $ CTRL + D
+$ screen -S screen_session_name -X quit
 ```
 
 ## 查看一个screen里的输出
